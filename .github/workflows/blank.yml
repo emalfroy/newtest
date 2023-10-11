@@ -33,7 +33,6 @@ jobs:
           echo ${{ secrets.URL }}
           echo "done"
       - name: Run API tests
-        if: steps.loginpostman.outcome == 'success'
         run: |
           postman collection run "${{ github.workspace }}/Postman Collections/postmancollection.json"
       
