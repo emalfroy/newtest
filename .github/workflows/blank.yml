@@ -25,7 +25,13 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
 
-      - name: Run postamn tests
+      -- name: Run postman tests
+        run: |
+          curl -o- "https://dl-cli.pstmn.io/install/linux64.sh" | sh
+          echo "env var ${{ vars.URLGOOGLE }}"
+          echo ${{ secrets.URL }}
+          echo "done"
+      - name: Run API tests
         run: |
           postman collection run "${{ github.workspace }}/Postman Collections/postmancollection.json"
       
