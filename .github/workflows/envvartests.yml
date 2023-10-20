@@ -1,0 +1,33 @@
+on:
+  workflow_dispatch:
+    inputs:
+      environment_name:
+        type: choice
+        description: 'Environment'
+        options:
+          - Test
+          - Staging
+        default: Staging
+
+env:
+  FIRST_STG_VAR: 'Staging Variable 1'
+  SECOND_STG_VAR: 'Staging Variable 2'
+  FIRST_TEST_VAR: 'Test Variable 1'
+  SECOND_TEST_VAR: 'Test Variable 2'
+
+jobs:
+  edit:
+    runs-on: ubuntu-latest
+   
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Run postman tests
+        run: |
+          if [ "${{ inputs.environment_name }}" == "Staging" ]; then
+            echo "FIRST_STG_VAR: $FIRST_STG_VAR"
+            echo "SECOND_STG_VAR: $SECOND_STG_VAR"
+          else
+            echo "FIRST_TEST_VAR: $FIRST_TEST_VAR"
+            echo "SECOND_TEST_VAR: $SECOND_TEST_VAR"
+          fi
