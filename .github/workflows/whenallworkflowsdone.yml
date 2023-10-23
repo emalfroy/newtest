@@ -10,7 +10,6 @@ jobs:
 
     steps:
       - name: Trigger Workflow CI
-        uses: actions/workflow-dispatch@v2
+        uses: benc-uk/workflow-dispatch@v1
         with:
           workflow: CI
-          ref: main  # The branch you want to trigger Workflow A on
