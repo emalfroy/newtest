@@ -1,12 +1,8 @@
 name: Run After All Workflows
 
 on:
-  workflow_run:
-    workflows:
-      - "envvartests"
-      - "CI"
-    types:
-      - completed
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
 
 jobs:
   build:
@@ -20,3 +16,4 @@ jobs:
       run: |
         # Add your custom code or command here
         echo "All workflows are completed. Running this action now."
+        gh run blank.yml
