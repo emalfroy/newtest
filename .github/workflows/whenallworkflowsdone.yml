@@ -10,6 +10,6 @@ jobs:
 
     steps:
       - name: Trigger Workflow CI
-        uses: benc-uk/workflow-dispatch@v1
+        uses: benc-uk/workflow-dispatch@v1.2.2
         with:
           workflow: CI
