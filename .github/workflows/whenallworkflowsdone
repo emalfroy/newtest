@@ -1,0 +1,20 @@
+name: Run After All Workflows
+
+on:
+  workflow_run:
+    workflows: ["envvartests", "CI"]
+    types:
+      - completed
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Run your desired action
+      run: |
+        # Add your custom code or command here
+        echo "All workflows are completed. Running this action now."
