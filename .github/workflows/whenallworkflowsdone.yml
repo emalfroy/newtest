@@ -19,6 +19,6 @@ jobs:
         with:
           status: ${{ job.status }} # required
           notification_title: '{workflow} has {status_message}'
-          message_format: '{emoji} *{workflow}* {status_message} in <{repo_url}|{repo}>'
+          message_format: steps.run-api-tests.outcome == 'success'
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # required
