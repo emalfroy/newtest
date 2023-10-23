@@ -2,7 +2,9 @@ name: Run After All Workflows
 
 on:
   workflow_run:
-    workflows: ["envvartests", "CI"]
+    workflows:
+      - "envvartests"
+      - "CI"
     types:
       - completed
 
