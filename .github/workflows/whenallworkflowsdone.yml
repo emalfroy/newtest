@@ -13,3 +13,12 @@ jobs:
         uses: benc-uk/workflow-dispatch@v1.2.2
         with:
           workflow: CI
+      - name: Send to slack
+        uses: ravsamhq/notify-slack-action@v2
+        if: always()
+        with:
+          status: ${{ job.status }} # required
+          notification_title: '{workflow} has {status_message}'
+          message_format: '{emoji} *{workflow}* {status_message} in <{repo_url}|{repo}>'
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # required
