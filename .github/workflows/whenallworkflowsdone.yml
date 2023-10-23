@@ -14,7 +14,7 @@ jobs:
         with:
           workflow: CI
       - name: something
-        if: ${{ steps.Trigger Workflow CI.outcome == 'success' }}
+        if: ${{ success() }}
         run: |
           echo "The 'Trigger Workflow CI' step was successful. Performing this action."
       - name: Send to slack
