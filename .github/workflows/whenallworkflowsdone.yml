@@ -13,6 +13,10 @@ jobs:
         uses: benc-uk/workflow-dispatch@v1.2.2
         with:
           workflow: CI
+      - name: something
+        if: ${{ steps.Trigger Workflow CI.outcome == 'success' }}
+        run: |
+          echo "The 'Trigger Workflow CI' step was successful. Performing this action."
       - name: Send to slack
         uses: ravsamhq/notify-slack-action@v2
         if: always()
