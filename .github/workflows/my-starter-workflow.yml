@@ -4,13 +4,13 @@ on:
   workflow_dispatch:
 
 jobs:
-  call-workflow-in-local-repo:
+  job1:
     uses: ./.github/workflows/blank.yml
   second-job:
-    needs: call-workflow-in-local-repo
+    needs: job1
     name: Test
     runs-on: ubuntu-latest
     steps:
       - name: Sample Step
         run: |
-          echo ${{ needs.call-workflow-in-local-repo.outputs.firstword }} ${{ needs.call-workflow-in-local-repo.outputs.secondword }}
+          echo ${{ needs.job1.outputs.firstword }} ${{ needs.job1.outputs.secondword }}
