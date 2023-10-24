@@ -34,14 +34,14 @@ jobs:
           postman collection run "${{ github.workspace }}/Postman Collections/postmancollection.json"
       - name: Print Step Outcome
         run: |
-          if success("${{ steps.run-api-tests.id }}") ; then
+          if [ ${{ steps.run-api-tests.outcome }} == 'success' ]; then
             echo "API tests were successful"
           else
             echo "API tests failed"
           fi
 
           # Set the output based on the success/failure
-          if success("${{ steps.run-api-tests.id }}") ; then
+          if [ ${{ steps.run-api-tests.outcome }} == 'success' ]; then
             echo "::set-output name=test::successful"
           else
             echo "::set-output name=test::failed"
