@@ -10,10 +10,10 @@ on:
     outputs:
       firstword:
         description: "The first output string"
-        value: ${{ jobs.example_job.outputs.output1 }}
+        value: ${{ jobs.build.outputs.output1 }}
       secondword:
         description: "The second output string"
-        value: ${{ jobs.example_job.outputs.output2 }}
+        value: ${{ jobs.build.outputs.output2 }}
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
