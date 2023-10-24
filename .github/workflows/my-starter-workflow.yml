@@ -13,4 +13,4 @@ jobs:
     steps:
       - name: Sample Step
         run: |
-          echo result: ${{steps.run-api-tests.outcome}}
+          echo ${{ needs.call-workflow-in-local-repo.outputs.firstword }} ${{ needs.call-workflow-in-local-repo.outputs.secondword }}
