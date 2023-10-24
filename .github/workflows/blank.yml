@@ -14,6 +14,8 @@ jobs:
   build:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
+    outputs:
+      output1: ${{ steps.run-api-tests.outputs.test }}
     environment: 	testenv
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -30,4 +32,4 @@ jobs:
         id: run-api-tests
         run: |
           postman collection run "${{ github.workspace }}/Postman Collections/postmancollection.json"
-      
+          echo "test= ${{build.steps.run-api-tests.outcome}}"
