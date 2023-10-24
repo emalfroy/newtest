@@ -7,6 +7,13 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
   workflow_call:
+    outputs:
+      firstword:
+        description: "The first output string"
+        value: ${{ jobs.example_job.outputs.output1 }}
+      secondword:
+        description: "The second output string"
+        value: ${{ jobs.example_job.outputs.output2 }}
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -15,7 +22,8 @@ jobs:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
     outputs:
-      output1: ${{ steps.run-api-tests.outputs.test }}
+      output1: ${{ steps.step1.outputs.firstword }}
+      output2: ${{ steps.step2.outputs.secondword }}
     environment: 	testenv
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -32,17 +40,7 @@ jobs:
         id: run-api-tests
         run: |
           postman collection run "${{ github.workspace }}/Postman Collections/postmancollection.json"
-      - name: Print Step Outcome
-        run: |
-          if [ ${{ steps.run-api-tests.outcome }} == 'success' ]; then
-            echo "API tests were successful"
-          else
-            echo "API tests failed"
-          fi
-
-          # Set the output based on the success/failure
-          if [ ${{ steps.run-api-tests.outcome }} == 'success' ]; then
-            echo "test=success" >> "$GITHUB_OUTPUT"
-          else
-            echo "test=failed" >> "$GITHUB_OUTPUT"
-          fi
+      - id: step1
+        run: echo "firstword=hello" >> $GITHUB_OUTPUT
+      - id: step2
+        run: echo "secondword=world" >> $GITHUB_OUTPUT
