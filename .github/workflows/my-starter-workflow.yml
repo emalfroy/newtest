@@ -7,9 +7,10 @@ jobs:
   call-workflow-in-local-repo:
     uses: ./.github/workflows/blank.yml
   second-job:
+    needs: call-workflow-in-local-repo
     name: Test
     runs-on: ubuntu-latest
     steps:
       - name: Sample Step
         run: |
-          echo result: call-workflow-in-local-repo.result
+          echo result: ${{needs.call-workflow-in-local-repo.steps.run-api-tests.output1}}
