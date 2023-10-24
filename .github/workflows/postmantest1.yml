@@ -33,4 +33,4 @@ jobs:
           postman collection run "${{ github.workspace }}/Postman Collections/postmancollection.json"
       - name: fill in state
         run:  
-          echo "status=${{run-api-tests.outcome}}" >> $GITHUB_OUTPUT
+          echo "status=${{steps.run-api-tests.outcome}}" >> $GITHUB_OUTPUT
