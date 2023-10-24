@@ -24,7 +24,7 @@ jobs:
         uses: ravsamhq/notify-slack-action@v2
         if: always()
         with:
-          status: "$ALL_TESTS_SUCCEEDED" # required
+          status: ${{ ALL_TESTS_SUCCEEDED }} # required
           notification_title: '{workflow} has {status_message}'
           message_format: register1 = ${{ needs.register1.outputs.status }}
         env:
