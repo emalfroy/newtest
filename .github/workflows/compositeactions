@@ -1,0 +1,14 @@
+on:
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  hello_world_job:
+    runs-on: ubuntu-latest
+    name: A job to say hello
+    steps:
+      - uses: actions/checkout@v4
+      - id: foo
+        uses: actions/newtest-blank@v1
+      - run: echo status runned tests ${{ steps.run-api-tests..outcome == 'success' }}
+        shell: bash
