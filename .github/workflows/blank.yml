@@ -32,5 +32,5 @@ jobs:
         id: run-api-tests
         run: |
           postman collection run "${{ github.workspace }}/Postman Collections/postmancollection.json"
-          echo ${{needs.build.steps.run-api-tests.outcome}}
+          echo ${{run-api-tests.outcome}}
           echo "::set-output name=test::${{steps.run-api-tests.outcome}}"
