@@ -13,4 +13,4 @@ jobs:
     steps:
       - name: Sample Step
         run: |
-          echo result: ${{needs.call-workflow-in-local-repo.outputs.output1}}
+          echo result: ${{steps.run-api-tests.outcome}}
