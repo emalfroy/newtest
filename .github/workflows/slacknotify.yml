@@ -21,4 +21,4 @@ jobs:
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # required
       - name: print
-          run echo ${{ needs.register1.outputs.status }}
+        run: echo ${{ needs.register1.outputs.status }}
