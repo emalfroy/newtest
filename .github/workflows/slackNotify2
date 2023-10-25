@@ -1,0 +1,32 @@
+name: slack notify
+on:
+  workflow_dispatch:
+jobs:
+  register1:
+    uses: ./.github/workflows/postmantest2.yml
+  second-job:
+    needs: register1
+    name: notify-slack
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set Environment Variable Based on Condition
+        run: |
+          if [${{ needs.register1.outputs.status }} == 'success' && ${{ needs.register1.outputs.status }} != 'success']; then
+            echo "Setting MY_VARIABLE to 'success'"
+            echo "ALL_TESTS_SUCCEEDED=success" >> $GITHUB_ENV
+          else
+            echo "Setting MY_VARIABLE to 'failure'"
+            echo "ALL_TESTS_SUCCEEDED=failure" >> $GITHUB_ENV
+          fi
+      - name: Send to slack
+        uses: ravsamhq/notify-slack-action@v2
+        if: always()
+        with:
+          status: ${{ env.ALL_TESTS_SUCCEEDED }} # required
+          notification_title: '{workflow} has {status_message}'
+          message_format: register1 = ${{ needs.register1.outputs.status }}
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # required
+      - name: print
+        run: echo ${{ needs.register1.outputs.status }}
+          echo $ALL_TESTS_SUCCEEDED ${{ vars.ALL_TESTS_SUCCEEDED }}
