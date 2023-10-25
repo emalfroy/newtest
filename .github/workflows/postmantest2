@@ -1,0 +1,33 @@
+name: Postman test 1
+on:
+  workflow_dispatch:
+  workflow_call:
+    outputs:
+      status:
+        description: "The status of the tests"
+        value: ${{ jobs.tests.outputs.output1 }}
+jobs:
+  # This workflow contains a single job called "build"
+  tests:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    outputs:
+      output1: ${{ steps.fill-in-state.outputs.status }}
+    environment: 	testenv
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+      - name: Run postman tests
+        run: |
+          curl -o- "https://dl-cli.pstmn.io/install/linux64.sh" | sh
+          echo "env var ${{ vars.URLGOOGLE }}"
+          echo ${{ secrets.URL }}
+          echo "done"
+      - name: Run API tests
+        id: run-api-tests
+        run: |
+          postman collection run "${{ github.workspace }}/Postman Collections/postmancollection.json"
+      - id: fill-in-state
+        run:  
+          echo "status=${{steps.run-api-tests.outcome}}" >> $GITHUB_OUTPUT
