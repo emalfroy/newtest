@@ -6,6 +6,8 @@ on:
 jobs:
   register1:
     uses: ./.github/workflows/postmantest1.yml
+    with:
+      environment_name: Staging
   second-job:
     needs: register1
     name: notify-slack
