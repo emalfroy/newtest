@@ -16,7 +16,7 @@ jobs:
     steps:
       - name: Set Environment Variable Based on Condition
         run: |
-          if [${{ needs.register1.outputs.status }} == 'success' && ${{ needs.register1.outputs.status }} != 'success']; then
+          if ${{ (needs.register1.outputs.status == 'success') && (needs.register1.outputs.status == 'success') }} ; then
             echo "Setting MY_VARIABLE to 'success'"
             echo "ALL_TESTS_SUCCEEDED=success" >> $GITHUB_ENV
           else
