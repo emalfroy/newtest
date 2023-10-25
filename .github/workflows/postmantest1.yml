@@ -58,3 +58,6 @@ jobs:
       - id: fill-in-state
         run:
           echo "status=${{steps.run-api-tests.outcome}}" >> $GITHUB_OUTPUT
+      - id: printing
+        run:
+          echo ${{ github.event.inputs.tests_to_run }}
