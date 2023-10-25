@@ -19,11 +19,6 @@ on:
         - ParcelRead
         default: Test
   workflow_call:
-    inputs:
-      environment_name:
-        type: string
-      tests_to_run:
-        type: string
     outputs:
       status:
         description: "The status of the tests"
