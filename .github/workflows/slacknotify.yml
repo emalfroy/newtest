@@ -30,9 +30,9 @@ jobs:
           status: ${{ env.ALL_TESTS_SUCCEEDED }} # required
           notification_title: '{workflow} has {status_message}'
           message_format: |
-            {emoji} register1 = ${{ needs.register1.outputs.status }}
-            {emoji} register2 = ${{ needs.register1.outputs.status }}
-            {emoji} register3 = ${{ needs.register1.outputs.status }}
+            register1 = ${{ needs.register1.outputs.status }}
+            register2 = ${{ needs.register1.outputs.status }}
+            register3 = ${{ needs.register1.outputs.status }}
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # required
       - name: print
