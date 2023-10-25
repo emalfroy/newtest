@@ -11,9 +11,18 @@ on:
         - Staging
         - Production
         default: Test
+      tests_to_run:
+        type: choice
+        description: 'Tests to run'
+        options:
+        - BuildingRead
+        - ParcelRead
+        default: Test
   workflow_call:
     inputs:
       environment_name:
+        type: string
+      tests_to_run:
         type: string
     outputs:
       status:
@@ -48,5 +57,6 @@ jobs:
           postman collection run "${{ github.workspace }}/Postman Collections/postmancollection.json"
       - id: fill-in-state
         run:  
+          echo ${{ github.event.inputs.tests_to_run }}
           echo ${{ env[inputs.environment_name] }}
           echo "status=${{steps.run-api-tests.outcome}}" >> $GITHUB_OUTPUT
