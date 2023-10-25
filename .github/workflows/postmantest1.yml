@@ -2,11 +2,26 @@ name: Postman test 1
 
 on:
   workflow_dispatch:
+    inputs:
+      environment_name:
+        type: choice
+        description: 'environment'
+        options:
+        - Test
+        - Staging
+        - Production
+        default: Test
   workflow_call:
+    inputs:
+      environment_name:
+        type: string
     outputs:
       status:
         description: "The status of the tests"
         value: ${{ jobs.tests.outputs.output1 }}
+env:
+  Test: "test is chosen"
+  Staging: "staging is chosen"
 
 jobs:
   # This workflow contains a single job called "build"
@@ -33,4 +48,5 @@ jobs:
           postman collection run "${{ github.workspace }}/Postman Collections/postmancollection.json"
       - id: fill-in-state
         run:  
+          echo ${{ env[inputs.environment_name] }}
           echo "status=${{steps.run-api-tests.outcome}}" >> $GITHUB_OUTPUT
