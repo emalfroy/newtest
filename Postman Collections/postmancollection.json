@@ -33,6 +33,20 @@
 		},
 		{
 			"name": "second",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "58ac7018-159a-423c-8bc4-bc7dc64b06a7",
+						"exec": [
+							"pm.test(\"Status test\", function () {\r",
+							"    pm.response.to.have.status(300);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"id": "97b37f32-31a3-467d-b0fb-a274e79c24d3",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
