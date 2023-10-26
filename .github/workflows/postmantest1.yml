@@ -56,6 +56,7 @@ jobs:
         run: |
           postman collection run "${{ github.workspace }}/Postman Collections/postmancollection.json"
       - id: fill-in-state
+        if: always()
         run:
           echo "status=${{steps.run-api-tests.outcome}}" >> $GITHUB_OUTPUT
       - id: printing
