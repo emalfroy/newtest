@@ -11,6 +11,7 @@ jobs:
       tests_to_run: Address
   second-job:
     needs: register1
+    if: always()
     name: notify-slack
     runs-on: ubuntu-latest
     steps:
