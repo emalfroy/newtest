@@ -33,6 +33,6 @@ jobs:
             register2 = ${{ needs.register1.outputs.status }}
             register3 = ${{ needs.register1.outputs.status }}
         env:
-          SLACK_BOT_TOKEN: ${{ secrets.SLACK_WEBHOOK_URL }}
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
       - name: print
         run: echo ${{ needs.register1.outputs.status }} $ALL_TESTS_SUCCEEDED ${{ vars.ALL_TESTS_SUCCEEDED }}
