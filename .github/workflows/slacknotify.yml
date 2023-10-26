@@ -25,16 +25,16 @@ jobs:
             echo "ALL_TESTS_SUCCEEDED=failure" >> $GITHUB_ENV
           fi
       - name: Send to slack
-        uses: ravsamhq/notify-slack-action@v2
+        uses: rtCamp/action-slack-notify@v2
         if: always()
-        with:
-          status: ${{ env.ALL_TESTS_SUCCEEDED }} # required
-          notification_title: '{workflow} has {status_message}'
-          message_format: |
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # required
+          SLACK_COLOR: ${{ env.ALL_TESTS_SUCCEEDED }}
+          SLACK_CHANNEL: random
+          SLACK_TITLE: '{workflow} has {status_message}'
+          SLACK_MESSAGE: |
             register1 = ${{ needs.register1.outputs.status }}
             register2 = ${{ needs.register1.outputs.status }}
             register3 = ${{ needs.register1.outputs.status }}
-        env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # required
       - name: print
         run: echo ${{ needs.register1.outputs.status }} $ALL_TESTS_SUCCEEDED ${{ vars.ALL_TESTS_SUCCEEDED }}
