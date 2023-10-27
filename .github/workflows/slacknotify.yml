@@ -36,7 +36,7 @@ jobs:
               [
                 {
                   "mrkdwn_in": ["text"],
-                  "color": "#36a64f",
+                  "color": "good",
                   "pretext": "Optional pre-text that appears above the attachment block",
                   "author_name": "author_name",
                   "author_link": "http://flickr.com/bobby/",
