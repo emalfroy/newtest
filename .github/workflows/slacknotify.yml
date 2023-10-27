@@ -31,7 +31,8 @@ jobs:
             {
               "text": "register1 test status is: ${{ needs.register1.outputs.status }}",
               "channel": "#random",
-              "attachments": [
+              "attachments": 
+              [
                 {
                   "color": "#36a64f"
                 }
