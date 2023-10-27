@@ -33,7 +33,14 @@ jobs:
                "attachments": [
                  {
                    "pretext": "Deployment started",
-                   "color": "dbab09"
+                   "color": "dbab09",
+                   "fields": [
+                     {
+                       "title": "Status",
+                       "short": true,
+                       "value": "In Progress"
+                     }
+                   ]
                  }
                ]
             }
