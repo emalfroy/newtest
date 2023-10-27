@@ -29,8 +29,8 @@ jobs:
         with:
           payload: |
             {
-              "text": "register1 test status is: ${{ needs.register1.outputs.status }}\n" + 
-              "register1 test status is: ${{ needs.register1.outputs.status }}\n" , 
+              "text": "register1 test status is: ${{ needs.register1.outputs.status }}
+              "register1 test status is: ${{ needs.register1.outputs.status }}" , 
               "channel": "#random"
             }
         env:
