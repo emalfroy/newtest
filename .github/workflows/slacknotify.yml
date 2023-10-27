@@ -29,9 +29,13 @@ jobs:
         with:
           payload: |
             {
-              "text": "register1 test status is: ${{ needs.register1.outputs.status }}
-              "register1 test status is: ${{ needs.register1.outputs.status }}" , 
-              "channel": "#random"
+               "text": "Deployment started (In Progress)",
+               "attachments": [
+                 {
+                   "pretext": "Deployment started",
+                   "color": "dbab09"
+                 }
+               ]
             }
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
