@@ -27,7 +27,12 @@ jobs:
       - name: Send to slack
         uses: slackapi/slack-github-action@v1.24.0
         with:
-          payload: '{"text": "register1 test status is: ${{ needs.register1.outputs.status }}", "channel": "#random", "status": "good"}'
+          payload: |
+            {
+              "text": "register1 test status is: ${{ needs.register1.outputs.status }}\n" + 
+              "register1 test status is: ${{ needs.register1.outputs.status }}\n" , 
+              "channel": "#random"
+            }
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
       - name: print
