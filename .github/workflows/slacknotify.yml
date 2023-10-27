@@ -28,7 +28,9 @@ jobs:
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
         run: |
-          json_payload='{"text": "Hello from GitHub Actions!"}' # Customize the JSON payload
+          json_payload= {
+            "text": "Hello from GitHub Actions!"
+            }
           curl -X POST -H 'Content-type: application/json' --data "$json_payload" $SLACK_WEBHOOK_URL
       - name: print
         run: echo ${{ needs.register1.outputs.status }} $ALL_TESTS_SUCCEEDED ${{ vars.ALL_TESTS_SUCCEEDED }}
