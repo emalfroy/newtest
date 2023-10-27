@@ -30,8 +30,8 @@ jobs:
           channel-id: '#it'
           payload: |
             {
-              "register1": "${{ needs.register1.outputs.status }}",
-              "register2": " ${{ needs.register1.outputs.status }}"
+              "text": "${{ needs.register1.outputs.status }}",
+              "channel": "#it"
             }
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
