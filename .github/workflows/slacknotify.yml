@@ -33,8 +33,13 @@ jobs:
             
               "text": "register1 test status is: ${{ needs.register1.outputs.status }}",
               "channel": "#it",
-              "color": "#36a64f"
-            }
+              "attachments": |
+              [
+                {
+                  "mrkdwn_in": ["text"],
+                  "color": "#36a64f",
+                }
+              ]
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
       - name: print
