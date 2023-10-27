@@ -28,10 +28,11 @@ jobs:
         uses: slackapi/slack-github-action@v1.24.0
         with:
           channel-id: '#it'
-          slack-message: |
-            register1 = ${{ needs.register1.outputs.status }}
-            register2 = ${{ needs.register1.outputs.status }}
-            register3 = ${{ needs.register1.outputs.status }}
+          payload: |
+            {
+              "register1": "${{ needs.register1.outputs.status }}",
+              "register2": " ${{ needs.register1.outputs.status }}"
+            }
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
       - name: print
