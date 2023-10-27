@@ -30,14 +30,11 @@ jobs:
           channel-id: '#it'
           payload: |
             {
-            
               "text": "register1 test status is: ${{ needs.register1.outputs.status }}",
               "channel": "#it",
-              "attachments": |
-              [
+              "attachments": [
                 {
-                  "mrkdwn_in": ["text"],
-                  "color": "#36a64f",
+                  "color": "#36a64f"
                 }
               ]
             }
