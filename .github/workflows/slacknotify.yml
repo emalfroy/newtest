@@ -27,11 +27,10 @@ jobs:
       - name: Send to slack
         uses: slackapi/slack-github-action@v1.24.0
         with:
-          channel-id: '#it'
           payload: |
             {
               "text": "register1 test status is: ${{ needs.register1.outputs.status }}",
-              "channel": "#it",
+              "channel": "#random",
               "attachments": [
                 {
                   "color": "#36a64f"
