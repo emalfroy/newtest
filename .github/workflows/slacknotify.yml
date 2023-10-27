@@ -24,27 +24,11 @@ jobs:
             echo "Setting MY_VARIABLE to 'failure'"
             echo "ALL_TESTS_SUCCEEDED=failure" >> $GITHUB_ENV
           fi
-      - name: Send to slack
-        uses: slackapi/slack-github-action@v1.24.0
-        with:
-          payload: |
-            {
-               "text": "Deployment started (In Progress)",
-               "attachments": [
-                 {
-                   "pretext": "Deployment started",
-                   "color": "dbab09",
-                   "fields": [
-                     {
-                       "title": "Status",
-                       "short": true,
-                       "value": "In Progress"
-                     }
-                   ]
-                 }
-               ]
-            }
+      - name: Send Slack Notification
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        run: |
+          json_payload='{"text": "Hello from GitHub Actions!"}' # Customize the JSON payload
+          curl -X POST -H 'Content-type: application/json' --data "$json_payload" $SLACK_WEBHOOK_URL
       - name: print
         run: echo ${{ needs.register1.outputs.status }} $ALL_TESTS_SUCCEEDED ${{ vars.ALL_TESTS_SUCCEEDED }}
