@@ -32,24 +32,7 @@ jobs:
               "text": "register1 test status is: ${{ needs.register1.outputs.status }}",
               "channel": "#random",
               "status": "good",
-              "attachments": 
-              [
-                {
-                  "mrkdwn_in": ["text"],
-                  "color": "good",
-                  "pretext": "Optional pre-text that appears above the attachment block",
-                  "author_name": "author_name",
-                  "author_link": "http://flickr.com/bobby/",
-                  "author_icon": "https://placeimg.com/16/16/people",
-                  "title": "title",
-                  "title_link": "https://api.slack.com/",
-                  "text": "Optional `text` that appears within the attachment",
-                  "thumb_url": "http://placekitten.com/g/200/200",
-                  "footer": "footer",
-                  "footer_icon": "https://platform.slack-edge.com/img/default_application_icon.png",
-                  "ts": 123456789
-                }
-              ]
+              "attachments": [{"color": "good"}]
             }
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
