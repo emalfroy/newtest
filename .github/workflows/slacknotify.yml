@@ -30,19 +30,24 @@ jobs:
         run: |
           json_payload='''{
             "text": "Hello from GitHub Actions!",
-            "attachment": {
-              "text": "This is a multi-line JSON payload",
-              "fields": [
-                {
-                  "title": "Field 1",
-                  "value": "Value 1"
-                },
-                {
-                  "title": "Field 2",
-                  "value": "Value 2"
-                }
-             ]
-            }
+            "attachments": [
+              {
+                "color": "#36a64f",
+                "text": "Optional `text` that appears within the attachment",
+              },
+              {
+                "color": "#36a64f",
+                "text": "Optional `text` that appears within the attachment",
+              },
+              {
+                "color": "danger",
+                "text": "Optional `text` that appears within the attachment",
+              },
+              {
+                "color": "#36a64f",
+                "text": "Optional `text` that appears within the attachment",
+              }
+            ]
           }'''
           curl -X POST -H 'Content-type: application/json' --data "$json_payload" $SLACK_WEBHOOK_URL
       - name: print
