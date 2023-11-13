@@ -26,11 +26,11 @@ jobs:
           fi
       - name: Set footer
         run: |
-          if ${{ $ALL_TESTS_SUCCEEDED == 'failure' }} ; then
+          if ${{ ALL_TESTS_SUCCEEDED == 'failure' }} ; then
             echo "Setting footer"
             echo "FOOTER_TEXT='<@U0631KQRGDN>,<@U0631KQRGDN>'" >> $GITHUB_ENV
           else
-            echo ${{ $ALL_TESTS_SUCCEEDED }}
+            echo ${{ ALL_TESTS_SUCCEEDED }}
           fi
       - name: Send Slack Notification
         env:
@@ -60,4 +60,4 @@ jobs:
           }'''
           curl -X POST -H 'Content-type: application/json' --data "$json_payload" $SLACK_WEBHOOK_URL
       - name: print
-        run: echo ${{ needs.register1.outputs.status }} $ALL_TESTS_SUCCEEDED ${{ vars.ALL_TESTS_SUCCEEDED }}
+        run: echo ${{ needs.register1.outputs.status }} ${{ vars.ALL_TESTS_SUCCEEDED }}
