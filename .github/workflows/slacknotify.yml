@@ -60,4 +60,4 @@ jobs:
           }'''
           curl -X POST -H 'Content-type: application/json' --data "$json_payload" $SLACK_WEBHOOK_URL
       - name: print
-        run: echo ${{ needs.register1.outputs.status }} ${{ vars.ALL_TESTS_SUCCEEDED }}
+        run: echo $ALL_TESTS_SUCCEEDED
