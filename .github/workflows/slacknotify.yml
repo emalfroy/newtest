@@ -26,7 +26,7 @@ jobs:
           fi
       - name: Set footer
         run: |
-          if ${{ ALL_TESTS_SUCCEEDED == 'failure' }} ; then
+          if ${{ vars.ALL_TESTS_SUCCEEDED == 'failure' }} ; then
             echo "Setting footer"
             echo "FOOTER_TEXT=<@U0631KQRGDN>,<@U0631KQRGDN>" >> $GITHUB_ENV
           fi
