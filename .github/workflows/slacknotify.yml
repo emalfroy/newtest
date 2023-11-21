@@ -30,6 +30,7 @@ jobs:
             echo "Setting footer"
             echo "FOOTER_TEXT=<@U0631KQRGDN>" >> $GITHUB_ENV
           else
+            echo "FOOTER_TEXT=<@U0631KQRGDN>" >> $GITHUB_ENV
             echo $ALL_TESTS_SUCCEEDED
           fi
       - name: Send Slack Notification
