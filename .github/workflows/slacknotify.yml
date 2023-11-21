@@ -56,7 +56,7 @@ jobs:
                 "text": "Optional `text` that appears within the attachment",
               }
             ],
-            "footer": "$FOOTER_TEXT",
+            "footer": $FOOTER_TEXT,
           }'''
           curl -X POST -H 'Content-type: application/json' --data "$json_payload" $SLACK_WEBHOOK_URL
       - name: print
