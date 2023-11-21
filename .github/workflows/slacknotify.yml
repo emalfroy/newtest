@@ -25,12 +25,13 @@ jobs:
             echo "ALL_TESTS_SUCCEEDED=failure" >> $GITHUB_ENV
           fi
       - name: Set footer
+        id: footer
         run: |
           if [[ $ALL_TESTS_SUCCEEDED == 'failure' ]]; then
             echo "Setting footer"
-            echo "FOOTER_TEXT=<@U0631KQRGDN>" >> $GITHUB_ENV
+            echo "FOOTER_TEXT=<@U0631KQRGDN>" >> $GITHUB_OUTPUT
           else
-            echo "FOOTER_TEXT=<@U0631KQRGDN>" >> $GITHUB_ENV
+            echo "FOOTER_TEXT=<@U0631KQRGDN>" >> $GITHUB_OUTPUT
             echo $ALL_TESTS_SUCCEEDED
           fi
       - name: Send Slack Notification
@@ -38,7 +39,7 @@ jobs:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
         run: |
           json_payload='''{
-            "text": "${{ FOOTER_TEXT }} Hello from GitHub Actions! <@U0631KQRGDN>",
+            "text": "${{ steps.footer.output.FOOTER_TEXT }} Hello from GitHub Actions! <@U0631KQRGDN>",
             "attachments": [
               {
                 "color": "#36a64f",
