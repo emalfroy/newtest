@@ -29,7 +29,8 @@ jobs:
         run: |
           if [[ $ALL_TESTS_SUCCEEDED == 'failure' ]]; then
             echo "Setting footer"
-            echo "FOOTER_TEXT=<@U0631KQRGDN>" >> $GITHUB_OUTPUT
+            FOOTER_TEXT=<@U0631KQRGDN>
+            echo "FOOTER_TEXT=$FOOTER_TEXT" >> $GITHUB_OUTPUT
           else
             echo "FOOTER_TEXT=<@U0631KQRGDN>" >> $GITHUB_OUTPUT
             echo $ALL_TESTS_SUCCEEDED
