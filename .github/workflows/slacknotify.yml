@@ -39,7 +39,7 @@ jobs:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
         run: |
           json_payload='''{
-            "text": "${{ env.FOOTER_TEXT }} Hello from GitHub Actions! <@channel> <@U0631KQRGDN>",
+            "text": "${{ env.FOOTER_TEXT }} Hello from GitHub Actions! <!channel> <@U0631KQRGDN>",
             "attachments": [
               {
                 "color": "#36a64f",
