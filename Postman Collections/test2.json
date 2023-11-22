@@ -95,7 +95,8 @@
 			},
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [],
+				"url": "https://www.testsyncpostman.com"
 			},
 			"response": []
 		}
