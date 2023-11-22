@@ -88,7 +88,7 @@
 			"response": []
 		},
 		{
-			"name": "New Request",
+			"name": "testsyncpost",
 			"id": "859a7424-ef58-46db-b494-07c997813491",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
