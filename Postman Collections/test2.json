@@ -32,57 +32,6 @@
 			"response": []
 		},
 		{
-			"name": "first Copy",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "5e7739a4-fbae-4c81-8feb-4a016fb594f5",
-						"exec": [
-							"var jsonData = JSON.parse(responseBody);\r",
-							"postman.setEnvironmentVariable(\"id\", jsonData[0]._id);"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"id": "b39d11eb-9fc0-4222-b25d-5395ccc13867",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": "https://cat-fact.herokuapp.com/facts"
-			},
-			"response": []
-		},
-		{
-			"name": "first Copy",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "5e7739a4-fbae-4c81-8feb-4a016fb594f5",
-						"exec": [
-							""
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"id": "e95b69dc-32d3-4e62-b03d-e07ce0bab9bd",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": "https://cat-fact.herokuapp.com/facts"
-			},
-			"response": []
-		},
-		{
 			"name": "second",
 			"event": [
 				{
@@ -123,6 +72,30 @@
 						}
 					]
 				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"id": "e8b0ab38-0eff-4b53-8e6d-94d1e763f57e",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"id": "859a7424-ef58-46db-b494-07c997813491",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": []
 			},
 			"response": []
 		}
